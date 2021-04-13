@@ -1,19 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+
+import ProfsList from './pages/profs/ProfsList.vue';
+import ProfRegister from './pages/profs/ProfRegister.vue';
+import ProfDetail from './pages/profs/ProfDetail.vue';
+import ContactProf from './pages/requests/ContactProf.vue';
+import RequestsList from './pages/requests/RequestsList.vue';
+import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', redirect: '/profs' },
-        { path: '/profs', component: null },
-        { path: '/profs/:id', component: null,
+        {path: '/', redirect: '/profs'},
+        {path: '/profs', component: ProfsList},
+        {path: '/register', component: ProfRegister},
+        {path: '/profs/:id',
+            component: ProfDetail,
             children: [
-                { path: 'contact', component: null }
+                {path: 'contact', component: ContactProf}
             ]
         },
-        { path: '/register', component: null },
-        { path: '/requests', component: null },
-        { path: '/:notFound(.*)', component: null }
+        {path: '/requests', component: RequestsList},
+        {path: '/:notFound(.*)', component: NotFound}
     ]
-})
+});
 
-export default router
+export default router;

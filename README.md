@@ -1,4 +1,6 @@
-# pro-team-builder
+# Pro-team-builder
+
+Web development team builder. In this app I use in VueJS, routing, vuex.
 
 ## Project setup
 ```
@@ -20,5 +22,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
