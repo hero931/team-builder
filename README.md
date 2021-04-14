@@ -1,6 +1,6 @@
 # Pro-team-builder
 
-Web development team builder. In this app I use in VueJS, routing, vuex.
+### Web development team builder. In this app I use in VueJS, routing, vuex.
 
 ## Project setup
 ```
