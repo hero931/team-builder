@@ -40,5 +40,21 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "### Web development team builder. In this app I use in VueJS, routing, vuex.",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hero931/team-builder-app.git"
+  },
+  "keywords": [
+    "Team",
+    "builder"
+  ],
+  "author": "Ilya Andreev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hero931/team-builder-app/issues"
+  },
+  "homepage": "https://github.com/hero931/team-builder-app#readme"
 }
