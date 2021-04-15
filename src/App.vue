@@ -13,9 +13,7 @@ export default {
 </script>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+    
 
     html {
         font-family: "Roboto", sans-serif;
