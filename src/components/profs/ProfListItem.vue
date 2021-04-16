@@ -3,10 +3,9 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">{{ fullName }}</h3>
-                <h5 class="card-subtitle mb-2 text-muted">${{ rate }}</h5>
-                <p class="card-text"><span v-for="area in areas" :key="area">{{ area }}</span></p>
+                <h5 class="card-subtitle mb-2 text-muted">${{ rate }}</h5>                
                 <ul class="list-group list-group-flush" v-for="area in areas" :key="area">
-                    <li class="list-group-item">{{ area }}</li>                    
+                    <li class="list-group-item"><span class="badge rounded-pill bg-warning text-dark">{{ area }}</span></li>                    
                 </ul>
                 <a href="#" class="card-link"><router-link :to="contactLink">Contact</router-link></a>
                 <a href="#" class="card-link"><router-link :to="detailsLink">View Details</router-link></a>
@@ -36,5 +35,6 @@ export default {
     .card {
         width: 20rem;
         margin: 2rem;
+        box-shadow: 5px 10px rgb(197, 197, 141);
     }
 </style>

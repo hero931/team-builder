@@ -3,10 +3,13 @@
         <nav>
             <h2 id="a1"><router-link to="/">Team builder</router-link></h2>        
             <ul>
-                <li id="a2">
+                <li>
+                    <router-link to="/register">Register</router-link>
+                </li>
+                <li>
                     <router-link to="/profs">Professionals</router-link>
                 </li>
-                <li id="a3">
+                <li>
                     <router-link to="/requests">Requests</router-link>
                 </li>
             </ul>
