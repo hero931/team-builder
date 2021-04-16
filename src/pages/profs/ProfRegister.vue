@@ -1,5 +1,5 @@
 <template>
     <div>
-        Register a professional
+        Register
     </div>
 </template>
