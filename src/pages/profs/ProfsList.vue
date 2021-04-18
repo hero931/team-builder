@@ -1,7 +1,7 @@
 <template>
         <div class="card">
         <div class="card-body">
-            <button type="button" class="btn btn-outline-primary">Filter</button>
+            <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>
             <button type="button" class="btn btn-outline-primary">Refresh</button>           
         </div>        
         </div>            
@@ -21,16 +21,43 @@
 </template>
 
 <script>
+import ProfFilter from '../../components/profs/ProfFilter.vue'
 import ProfListItem from '../../components/profs/ProfListItem.vue'
 export default {
-    components: { ProfListItem },
+    components: { ProfListItem, ProfFilter },
+    data() {
+        return {
+            activeFilters: {
+                frontend: true,
+                backend: true,
+                career: true
+            }
+        }
+    },
     computed: {
         filteredProfs() {
-            return this.$store.getters['profs/profs'];
+            const profs = this.$store.getters['profs/profs'];
+            return profs.filter(prof => {
+                if(this.activeFilters.frontend && prof.areas.includes('frontend')) {
+                    return true;
+                }
+                if(this.activeFilters.backend && prof.areas.includes('backend')) {
+                    return true;
+                }
+                if(this.activeFilters.career && prof.areas.includes('career')) {
+                    return true;
+                }
+                return false;
+            });
         },
         hasProfs() {
             return this.$store.getters['profs/hasProfs']
         }
+    },
+    methods: {
+       chFilter(updatedFilters) {
+           this.activeFilters = updatedFilters;
+       } 
     },
 }
 </script>
@@ -41,12 +68,20 @@ export default {
         margin: 2rem auto;        
     }
     .card {
-        margin: 2rem;        
+        margin: 2rem;
+        display: grid;
+        grid-template-rows: 2rem 10rem;
+        grid-template-areas: "alef" "alef";
+        border: none;        
     }
     .card-body {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        grid-area: alef;
+        border: 1px solid lightgray;
+        border-radius: 6px;
+        box-shadow: 1px 3px lightgray;
     }
     .btn {
         margin: 0.3rem;
