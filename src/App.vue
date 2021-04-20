@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div>
         <div class="nav"><the-header></the-header></div>
         <router-view></router-view>
     </div>
@@ -19,22 +19,14 @@ export default {
         font-family: "Roboto", sans-serif;
     }    
 
-    .box {
-        display: grid;
-        grid-template-columns: repeat(4, 25%);
-        grid-template-rows: 5rem 10rem 10rem;
-        grid-template-areas: 
-            "alef alef alef alef"
-            "bet bet bet gimel"
-            "dal dal dal dal";
-    }
-
-    .nav {        
-        border: 1px solid lightgray;
-        grid-area: alef;
+    
+    .nav {
+        display: grid;        
+        border: 1px solid lightgray;        
         border-radius: 8px;
-        margin: 0.3rem;
+        margin: 1rem;
         box-shadow: 5px 10px lightgray;
+        grid-template-rows: 4rem;
     }
 
     

@@ -33,8 +33,7 @@ export default {
 
 <style scoped>
     .card {
-        width: 20rem;
-        margin: 2rem;
-        box-shadow: 5px 10px rgb(197, 197, 141);
+        box-shadow: 2px 3px rgb(240, 190, 99);
     }
 </style>
+

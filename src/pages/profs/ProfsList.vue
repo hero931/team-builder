@@ -1,11 +1,10 @@
 <template>
         <div class="card">
-        <div class="card-body">
-            <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>
-            <button type="button" class="btn btn-outline-primary">Refresh</button>           
-        </div>        
-        </div>            
-            <!-- <div><a href="#" class="card-link"><router-link to="/register">Register</router-link></a></div>          -->
+            <div class="card-body">
+                <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>
+                <button type="button" class="btn btn-outline-primary btn-sm">Refresh</button>           
+            </div>        
+        </div>                      
             <ul v-if="hasProfs" class="list-group">
                 <prof-list-item class="list-group-item"
                         v-for="prof in filteredProfs"
@@ -63,27 +62,29 @@ export default {
 </script>
 
 <style scoped>
-    ul {
-        list-style: none;
-        margin: 2rem auto;        
-    }
-    .card {
-        margin: 2rem;
+    .list-group {
         display: grid;
-        grid-template-rows: 2rem 10rem;
-        grid-template-areas: "alef" "alef";
+        grid-template-columns: 1fr 1fr 1fr 1fr;                                
+    }
+    .list-group-item {
         border: none;        
     }
-    .card-body {
+    .card {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        grid-area: alef;
-        border: 1px solid lightgray;
-        border-radius: 6px;
+        align-items: flex-start;
+        margin: 2rem 1rem;
+        max-width: 22rem;
         box-shadow: 1px 3px lightgray;
     }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;        
+    }
+
     .btn {
-        margin: 0.3rem;
-    }    
+        margin-top: 1rem;
+        max-width: 5rem;
+    }
+       
 </style>

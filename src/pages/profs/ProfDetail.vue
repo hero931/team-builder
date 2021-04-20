@@ -1,18 +1,17 @@
 <template>
-    <section class="container">
-        <div class="item-b">
+    <div class="main">        
             <div class="card">
                 <div class="card-header">
                     ${{ rate }}/hour
                 </div>        
-                    <div class="card-body">
-                        
+                    <div class="card-body">                        
                             <h5 class="card-title">{{ fullName }}</h5>
                             <p class="card-text">Interested? Reach out now!</p>
                             <a href="#" class="card-link card-text"><router-link :to="contactLink">Contact</router-link></a>
                             <router-view></router-view>
                     </div>
             </div>
+            <hr>
             <div class="card">
                 <div class="card-body">
                             <p class="card-text">{{ description }}</p>                    
@@ -20,9 +19,8 @@
                                 <li class="list-group-item"><span class="badge bg-info text-dark">{{ area }}</span></li>                    
                             </ul>
                 </div>            
-            </div>            
-        </div>
-    </section>
+            </div>     
+    </div>
 </template>
 
 <script>
@@ -58,21 +56,16 @@ export default {
 </script>
 
 <style scoped>
-    .container {
-        display: grid;
-        
-        grid-template-columns: 20rem 10rem 50px 50px;
-        grid-template-rows: auto;
-        grid-template-areas: 
-            "header header header header"
-            "main main . sidebar"
-            "footer footer footer footer";
+    .main {
+        display: grid;        
+        max-width: 30rem;
+        margin: 2rem;
+        border: 1px solid lightgray;
+        border-radius: 6px;
+        box-shadow: 1px 3px rgb(187, 197, 204);
     }
-    .item-b {
-        grid-area: header;
-        display: flex;
-        flex-direction: column;
-        margin: 3rem;
-        box-shadow: 3px 6px lightgray;
-    }   
+    .card {
+        border: none;
+    }
+     
 </style>
