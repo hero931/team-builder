@@ -2,10 +2,7 @@
     <header>
         <nav>
             <h2 id="a1"><router-link to="/">Team builder</router-link></h2>        
-            <ul>
-                <li>
-                    <router-link to="/register">Register</router-link>
-                </li>
+            <ul>                
                 <li>
                     <router-link to="/profs">Professionals</router-link>
                 </li>
@@ -17,8 +14,7 @@
     </header>
 </template>
 
-<style scoped>
-    
+<style scoped>    
     header {
         width: 100%;
         display: grid;
@@ -27,8 +23,7 @@
 
     header h2 {
         margin-left: 2rem;
-    }
-    
+    }    
 
     header a {
         text-decoration: none;          

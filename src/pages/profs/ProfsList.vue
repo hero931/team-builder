@@ -2,8 +2,9 @@
         <div class="card">
             <div class="card-body">
                 <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>
-                <button type="button" class="btn btn-outline-primary btn-sm">Refresh</button>           
-            </div>        
+                <router-link v-if="!isProf" to="/register">Register</router-link>
+                <button type="button" class="btn btn-outline-primary btn-sm">Refresh</button>                           
+            </div>                                                
         </div>                      
             <ul v-if="hasProfs" class="list-group">
                 <prof-list-item class="list-group-item"
@@ -51,6 +52,9 @@ export default {
         },
         hasProfs() {
             return this.$store.getters['profs/hasProfs']
+        },
+        isProf() {
+            return this.$store.getters['profs/isProf'];
         }
     },
     methods: {
@@ -85,6 +89,6 @@ export default {
     .btn {
         margin-top: 1rem;
         max-width: 5rem;
-    }
+    }   
        
 </style>

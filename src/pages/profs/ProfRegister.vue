@@ -2,7 +2,7 @@
         <div class="mainForm">                        
             <div class="form">
                 <h3 class="title">Register as a Professional!</h3>
-                <prof-form></prof-form>
+                <prof-form @save-data="submitData"></prof-form>
             </div>
         </div>    
 </template>
@@ -10,7 +10,13 @@
 <script>
 import ProfForm from '../../components/profs/ProfForm.vue'
 export default {
-    components: { ProfForm }
+    components: { ProfForm },    
+    methods: {
+        submitData(data) {
+            this.$store.dispatch('profs/registerProf', data);
+            this.$router.replace('/profs');
+        }
+    },
 }
 </script>
 

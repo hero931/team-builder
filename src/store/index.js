@@ -5,6 +5,16 @@ import profsModule from './modules/profs/index.js'
 const store = createStore({
     modules: {
         profs: profsModule
+    },
+    state() {
+        return {
+            userId: 'c3'
+        };
+    },
+    getters: {
+        userId(state) {
+            return state.userId;
+        }
     }
 });
 
