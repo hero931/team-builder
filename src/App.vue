@@ -13,13 +13,9 @@ export default {
 </script>
 
 <style>
-    
-
     html {
         font-family: "Roboto", sans-serif;
-    }    
-
-    
+    }     
     .nav {
         display: grid;        
         border: 1px solid lightgray;        
@@ -27,7 +23,5 @@ export default {
         margin: 1rem;
         box-shadow: 5px 10px lightgray;
         grid-template-rows: 4rem;
-    }
-
-    
+    }    
 </style>

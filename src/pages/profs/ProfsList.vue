@@ -1,7 +1,7 @@
 <template>
         <div class="card">
             <div class="card-body">
-                <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>
+                <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>                
                 <router-link v-if="!isProf" to="/register">Register</router-link>
                 <button type="button" class="btn btn-outline-primary btn-sm">Refresh</button>                           
             </div>                                                
@@ -35,9 +35,12 @@ export default {
         }
     },
     computed: {
+        isProf() {
+            return this.$store.getters['profs/isProf'];
+        },
         filteredProfs() {
-            const profs = this.$store.getters['profs/profs'];
-            return profs.filter(prof => {
+            const profs = this.$store.getters['profs/profs'];             
+            return profs.filter(prof => {                
                 if(this.activeFilters.frontend && prof.areas.includes('frontend')) {
                     return true;
                 }
@@ -52,10 +55,7 @@ export default {
         },
         hasProfs() {
             return this.$store.getters['profs/hasProfs']
-        },
-        isProf() {
-            return this.$store.getters['profs/isProf'];
-        }
+        }        
     },
     methods: {
        chFilter(updatedFilters) {
@@ -85,6 +85,8 @@ export default {
         display: flex;
         flex-direction: column;        
     }
+
+    
 
     .btn {
         margin-top: 1rem;
