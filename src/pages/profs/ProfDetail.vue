@@ -1,17 +1,16 @@
 <template>
-    <div class="main">        
+    <div class="mainOne">
+        <div class="main">        
             <div class="card">
                 <div class="card-header">
                     ${{ rate }}/hour
-                </div>        
-                    <div class="card-body">                        
-                            <h5 class="card-title">{{ fullName }}</h5>
-                            <p class="card-text">Interested? Reach out now!</p>
-                            <a href="#" class="card-link card-text"><router-link :to="contactLink">Contact</router-link></a>
-                            <router-view></router-view>
+                    </div>        
+                        <div class="card-body">                        
+                                <h5 class="card-title">{{ fullName }}</h5>                                                            
+                        </div>
                     </div>
+                <div>        
             </div>
-            <hr>
             <div class="card">
                 <div class="card-body">
                             <p class="card-text">{{ description }}</p>                    
@@ -19,8 +18,14 @@
                                 <li class="list-group-item"><span class="badge bg-info text-dark">{{ area }}</span></li>                    
                             </ul>
                 </div>            
-            </div>     
+            </div>      
+    </div>   
+    <div class="main1">
+        <div class="card">
+            <router-view></router-view>
+        </div>
     </div>
+    </div>   
 </template>
 
 <script>
@@ -56,6 +61,11 @@ export default {
 </script>
 
 <style scoped>
+    .mainOne {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .main {
         display: grid;        
         max-width: 30rem;
@@ -63,6 +73,11 @@ export default {
         border: 1px solid lightgray;
         border-radius: 6px;
         box-shadow: 1px 3px rgb(187, 197, 204);
+    }
+
+    .main1 {
+        display: grid;
+        margin: 2rem;           
     }
     .card {
         border: none;
