@@ -19,12 +19,12 @@
                             </ul>
                 </div>            
             </div>      
-    </div>   
-    <div class="main1">
-        <div class="card">
-            <router-view></router-view>
+        </div>   
+        <div class="main1">
+            <div class="card">
+                <router-view></router-view>
+            </div>
         </div>
-    </div>
     </div>   
 </template>
 
