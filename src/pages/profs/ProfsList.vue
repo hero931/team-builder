@@ -2,9 +2,15 @@
         <div class="card">
             <div class="card-body">
                 <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>                
-                <router-link v-if="!isProf" to="/register">Register</router-link>
-                <button type="button" class="btn btn-outline-primary btn-sm">Refresh</button>                           
-            </div>                                                
+                <router-link v-if="!isProf && !isLoading" to="/register">Register</router-link>
+                <button type="button" class="btn btn-outline-primary btn-sm" @click="loadProfs">Refresh</button>                           
+            </div>                                                            
+        </div>
+        <div class="spinner-border m-5" role="status" v-if="isLoading">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div v-show="!!error" class="m-4">
+            <h5>{{error}}</h5>
         </div>                      
             <ul v-if="hasProfs" class="list-group">
                 <prof-list-item class="list-group-item"
@@ -17,7 +23,7 @@
                         :rate="prof.hourlyRate"
                 ></prof-list-item>
             </ul>
-            <h4 v-else>No Professionals Found!</h4>    
+            <h4 v-else class="m-4">No Professionals Found!</h4>    
 </template>
 
 <script>
@@ -27,6 +33,8 @@ export default {
     components: { ProfListItem, ProfFilter },
     data() {
         return {
+            isLoading: false,
+            error: null,
             activeFilters: {
                 frontend: true,
                 backend: true,
@@ -54,12 +62,24 @@ export default {
             });
         },
         hasProfs() {
-            return this.$store.getters['profs/hasProfs']
+            return !this.isLoading && this.$store.getters['profs/hasProfs']
         }        
+    },
+    created() {
+        this.loadProfs();
     },
     methods: {
        chFilter(updatedFilters) {
            this.activeFilters = updatedFilters;
+       },
+       async loadProfs() {
+           this.isLoading = true;
+           try {
+               await this.$store.dispatch('profs/loadProfs');
+           } catch(error) {
+               this.error = error.message || 'Something went wrong!';               
+           }           
+           this.isLoading = false;
        } 
     },
 }

@@ -12,9 +12,7 @@ export default {
         const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/profs/${userId}.json`, {
             method: 'PUT',
             body: JSON.stringify(profData)
-        });
-
-        //const responseData = await response.json();
+        });        
 
         if(!response.ok) {
             //error...
@@ -24,5 +22,30 @@ export default {
             ...profData,
             id: userId
         });
+    },
+    async loadProfs(context) {
+        const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/profs.json`);
+        const responseData = await response.json();
+
+        if(!response.ok) {
+            const error = new Error(responseData.message || 'Failed to fetch!');
+            throw error;
+        }
+
+        const profs = [];
+
+        for(const key in responseData) {
+            const prof = {
+                id: key,
+                firstName: responseData[key].firstName,
+                lastName: responseData[key].lastName,
+                description: responseData[key].description,
+                hourlyRate: responseData[key].hourlyRate,
+                areas: responseData[key].areas 
+            };
+            profs.push(prof);
+        }
+        context.commit('setProfs', profs);
+
     }
 };
