@@ -1,4 +1,4 @@
-<template>
+<template>       
     <div class="form">
         <form @submit.prevent="submitForm">
             <div class="mb-3">
@@ -14,7 +14,7 @@
             <button type="submit" class="btn btn-outline-primary d-grid d-sm-block">Send</button>
             </div>
         </form>
-    </div>   
+    </div>       
 </template>
 
 <script>
@@ -54,6 +54,5 @@ export default {
         border-radius: 6px;
         box-shadow: 1px 3px rgb(187, 197, 204);
         padding: 1rem;
-    }
-    
+    }   
 </style>

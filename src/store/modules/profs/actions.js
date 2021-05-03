@@ -23,7 +23,11 @@ export default {
             id: userId
         });
     },
-    async loadProfs(context) {
+    async loadProfs(context, payload) {
+        if(!payload.forceRefresh && !context.getters.needUpdate) {
+            return;
+        }
+
         const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/profs.json`);
         const responseData = await response.json();
 
@@ -46,6 +50,6 @@ export default {
             profs.push(prof);
         }
         context.commit('setProfs', profs);
-
+        context.commit('setFetchTimestamp');
     }
 };

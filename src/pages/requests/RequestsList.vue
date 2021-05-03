@@ -4,8 +4,14 @@
             <div class="card-header">
                 <h4>Requests received</h4>
                 </div>        
-                    <div class="card-body">                        
-                        <ul v-if="hasRequests">
+                    <div class="card-body">
+                        <div v-show="!!error" class="m-4">
+                            <h5>{{error}}</h5>
+                        </div>
+                        <div class="spinner-border m-5" role="status" v-if="isLoading">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>                                                 
+                        <ul v-else-if="hasRequests && !isLoading">
                             <request-item v-for="req in myRequests"
                                 :key="req.id"
                                 :email="req.userEmail"
@@ -16,7 +22,7 @@
                     </div>
                 </div>
             <div>        
-        </div>        
+        </div>                       
     </div>
 </template>
 
@@ -26,12 +32,32 @@ export default {
     components: {
         RequestItem
     },
+    data() {
+        return {
+            isLoading: false,
+            error: null
+        }
+    },
     computed: {
         myRequests() {
             return this.$store.getters['requests/requests'];
         },
         hasRequests() {
             return this.$store.getters['requests/hasRequests'];
+        }
+    },
+    created() {
+        this.loadRequests();
+    },
+    methods: {
+        async loadRequests() {
+            this.isLoading = true;
+            try {
+                await this.$store.dispatch('requests/fetchRequests');
+            } catch(error) {
+                this.error = error.message || 'Something went wrong!';
+            }            
+            this.isLoading = false;
         }
     },
 }
@@ -50,10 +76,11 @@ export default {
         display: flex;
         text-align: center;
         grid-area: bet;
+        box-shadow: 3px 5px lightgray;
     }
     
     .card-header {
-        background: rgb(194, 226, 247);
+        background: rgb(223, 235, 240);
     }
 
     ul {

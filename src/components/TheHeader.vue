@@ -18,7 +18,8 @@
     header {
         width: 100%;
         display: grid;
-        grid-template-columns: 7fr 1.5fr;        
+        grid-template-columns: 7fr 1.5fr;
+        background: rgb(223, 235, 240);        
     }
 
     header h2 {

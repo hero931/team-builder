@@ -4,5 +4,8 @@ export default {
     },
     setProfs(state, payload) {
         state.profs = payload;
+    },
+    setFetchTimestamp(state) {
+        state.lastFetch = new Date().getTime();
     }
 };

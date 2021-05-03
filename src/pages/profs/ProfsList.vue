@@ -1,9 +1,10 @@
 <template>
+    <div>
         <div class="card">
             <div class="card-body">
                 <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>                
                 <router-link v-if="!isProf && !isLoading" to="/register">Register</router-link>
-                <button type="button" class="btn btn-outline-primary btn-sm" @click="loadProfs">Refresh</button>                           
+                <button type="button" class="btn btn-outline-primary btn-sm" @click="loadProfs(true)">Refresh</button>                           
             </div>                                                            
         </div>
         <div class="spinner-border m-5" role="status" v-if="isLoading">
@@ -11,7 +12,7 @@
         </div>
         <div v-show="!!error" class="m-4">
             <h5>{{error}}</h5>
-        </div>                      
+        </div>           
             <ul v-if="hasProfs" class="list-group">
                 <prof-list-item class="list-group-item"
                         v-for="prof in filteredProfs"
@@ -23,7 +24,8 @@
                         :rate="prof.hourlyRate"
                 ></prof-list-item>
             </ul>
-            <h4 v-else class="m-4">No Professionals Found!</h4>    
+            <h4 v-else class="m-4">No Professionals Found!</h4>
+    </div>                
 </template>
 
 <script>
@@ -72,10 +74,10 @@ export default {
        chFilter(updatedFilters) {
            this.activeFilters = updatedFilters;
        },
-       async loadProfs() {
+       async loadProfs(refresh = false) {
            this.isLoading = true;
            try {
-               await this.$store.dispatch('profs/loadProfs');
+               await this.$store.dispatch('profs/loadProfs', {forceRefresh: refresh});
            } catch(error) {
                this.error = error.message || 'Something went wrong!';               
            }           
@@ -104,13 +106,10 @@ export default {
     .card-body {
         display: flex;
         flex-direction: column;        
-    }
-
-    
+    }    
 
     .btn {
         margin-top: 1rem;
         max-width: 5rem;
-    }   
-       
+    }       
 </style>

@@ -19,12 +19,12 @@
                             </ul>
                 </div>            
             </div>      
-        </div>   
-        <div class="main1">
-            <div class="card">
-                <router-view></router-view>
-            </div>
-        </div>
+        </div>           
+            <div class="main1">
+                <div class="card">
+                    <router-view></router-view>
+                </div>
+            </div>       
     </div>   
 </template>
 
@@ -81,6 +81,5 @@ export default {
     }
     .card {
         border: none;
-    }
-     
+    }     
 </style>
