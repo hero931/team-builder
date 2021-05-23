@@ -25,14 +25,21 @@
                 ></prof-list-item>
             </ul>
             <h4 v-else class="m-4">No Professionals Found!</h4>
+        <div class="card">
+            <div class="card-body">                                
+                <event-general></event-general>
+                <button type="button" class="btn btn-outline-primary btn-sm">Details</button>                           
+            </div>                                                            
+        </div>
     </div>                
 </template>
 
 <script>
 import ProfFilter from '../../components/profs/ProfFilter.vue'
 import ProfListItem from '../../components/profs/ProfListItem.vue'
+import EventGeneral from '../../components/events/EventGeneral.vue'
 export default {
-    components: { ProfListItem, ProfFilter },
+    components: { ProfListItem, ProfFilter, EventGeneral },
     data() {
         return {
             isLoading: false,

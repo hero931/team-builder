@@ -23,6 +23,7 @@ export default {
             id: userId
         });
     },
+    
     async loadProfs(context, payload) {
         if(!payload.forceRefresh && !context.getters.needUpdate) {
             return;

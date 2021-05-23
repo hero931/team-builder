@@ -1,13 +1,16 @@
 <template>
     <header>
         <nav>
-            <h2 id="a1"><router-link to="/">Team builder</router-link></h2>        
+            <h2><router-link to="/">Team builder</router-link></h2>        
             <ul>                
                 <li>
                     <router-link to="/profs">Professionals</router-link>
                 </li>
                 <li>
                     <router-link to="/requests">Requests</router-link>
+                </li>
+                <li>
+                    <router-link to="/events">Events</router-link>
                 </li>
             </ul>
         </nav>

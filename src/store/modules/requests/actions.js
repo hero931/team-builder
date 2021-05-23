@@ -24,6 +24,7 @@ export default {
 
         context.commit('addRequest', newRequest);
     },
+    
     async fetchRequests(context) {
         const profId = context.rootGetters.userId;
         const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/requests/${profId}.json`); 

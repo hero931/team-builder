@@ -6,6 +6,7 @@ import ProfDetail from './pages/profs/ProfDetail.vue';
 import ContactProf from './pages/requests/ContactProf.vue';
 import RequestsList from './pages/requests/RequestsList.vue';
 import NotFound from './pages/NotFound.vue';
+import EventsList from './pages/events/EventsList.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -21,7 +22,8 @@ const router = createRouter({
             ]
         },
         {path: '/requests', component: RequestsList},
-        {path: '/:notFound(.*)', component: NotFound}
+        {path: '/:notFound(.*)', component: NotFound},
+        {path: '/events', component: EventsList}
     ]
 });
 
