@@ -7,8 +7,10 @@
                 <ul class="list-group list-group-flush" v-for="area in areas" :key="area">
                     <li class="list-group-item"><span class="badge rounded-pill bg-warning text-dark">{{ area }}</span></li>                    
                 </ul>
-                <a href="#" class="card-link"><router-link :to="contactLink">Contact</router-link></a>
-                <a href="#" class="card-link"><router-link :to="detailsLink">View Details</router-link></a>
+                <div class="links">
+                    <router-link :to="contactLink"><a href="#" class="link-info">Contact</a></router-link>
+                    <router-link :to="detailsLink"><a href="#" class="link-info">View Details</a></router-link>
+                </div>                
             </div>
         </div>
     </li>
@@ -34,6 +36,10 @@ export default {
 <style scoped>
     .card {
         box-shadow: 2px 3px rgb(240, 190, 99);
+    }
+
+    .links a {
+        margin-right: 1rem;
     }
 </style>
 
