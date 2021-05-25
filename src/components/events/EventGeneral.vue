@@ -1,10 +1,10 @@
 <template>
-    <div class="card" style="width: 18rem;">
+    <div class="card">
             <img :src="image" class="card-img-top" alt="meetup">
             <div class="card-body">
                 <h5 class="card-title">Events</h5>
                 <p class="card-text">Would you like to know more about our events? Check the link below</p>
-                <a href="#" class="link-info">Details</a>
+                <router-link to="/events"><a href="#" class="link-info">Details</a></router-link>
             </div>
     </div>
 </template>
