@@ -9,7 +9,7 @@ export default {
             areas: data.areas
         };
 
-        const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/profs/${userId}.json`, {
+        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/profs/${userId}.json`, {
             method: 'PUT',
             body: JSON.stringify(profData)
         });        
@@ -29,7 +29,7 @@ export default {
             return;
         }
 
-        const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/profs.json`);
+        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/profs.json`);
         const responseData = await response.json();
 
         if(!response.ok) {

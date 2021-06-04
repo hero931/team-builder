@@ -5,7 +5,7 @@ export default {
             userEmail: payload.email,
             message: payload.message
         };
-        const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/requests/${payload.profId}.json`, {
+        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/requests/${payload.profId}.json`, {
             method: 'POST',
             body: JSON.stringify(newRequest)
         });
@@ -27,7 +27,7 @@ export default {
     
     async fetchRequests(context) {
         const profId = context.rootGetters.userId;
-        const response = await fetch(`https://professionals-builder-default-rtdb.firebaseio.com/requests/${profId}.json`); 
+        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/requests/${profId}.json`); 
         const responseData = await response.json();
 
         if(!response.ok) {

@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <prof-filter @change-filter="chFilter"><button type="button" class="btn btn-outline-primary">Filter</button></prof-filter>                
-                    <router-link v-if="!isProf && !isLoading" to="/register" class="btn btn-primary stretched-link">Register</router-link>
+                    <router-link v-if="!isProf && !isLoading" to="/register" class="btn btn-primary">Register</router-link>
                     <button type="button" class="btn btn-outline-primary btn-sm" @click="loadProfs(true)">Refresh</button>                           
                 </div>                                                                        
             </div>
@@ -129,6 +129,6 @@ export default {
 
     .btn {
         margin-top: 1rem;
-        max-width: 5rem;
+        max-width: 6rem;
     }         
 </style>
