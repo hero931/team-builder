@@ -12,7 +12,7 @@
                     <input type="password" class="form-control" v-model.trim="password">                
                 </div>
                 <div v-if="!formIsValid" class="form-text mb-2">Please enter a valid password (at least 6 charachters) and valid email.</div>
-                <button type="button" class="btn btn-outline-primary">{{ submitBtnCapt }}</button>
+                <button type="submit" class="btn btn-outline-primary">{{ submitBtnCapt }}</button>
                 <button type="button" class="btn btn-outline-success" @click="switchAuthMode">{{ switchModeBtnCapt }}</button>
             </form>
         </div>
@@ -47,11 +47,20 @@ export default {
         }
     },
     methods: {
-        submitForm() {
+        submitForm() {            
             this.formIsValid = true;
             if(this.email === '' || !this.email.includes('@') || this.password < 6) {
                 this.formIsValid = false;
                 return;
+            }
+
+            if(this.mode === 'login') {
+                //...
+            } else {
+                this.$store.dispatch('signup', {
+                    email: this.email,
+                    password: this.password
+                });
             }
         },
         switchAuthMode() {
@@ -60,7 +69,7 @@ export default {
             } else {
                 this.mode = 'login';
             }
-        }
+        }        
     },
 }
 </script>
