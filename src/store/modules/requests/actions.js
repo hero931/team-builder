@@ -27,7 +27,8 @@ export default {
     
     async fetchRequests(context) {
         const profId = context.rootGetters.userId;
-        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/requests/${profId}.json`); 
+        const token = context.rootGetters.token;
+        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/requests/${profId}.json?auth=` + token); 
         const responseData = await response.json();
 
         if(!response.ok) {

@@ -9,7 +9,9 @@ export default {
             areas: data.areas
         };
 
-        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/profs/${userId}.json`, {
+        const token = context.rootGetters.token;
+
+        const response = await fetch(`https://pro-builder-9bc6d-default-rtdb.firebaseio.com/profs/${userId}.json?auth=` + token, {
             method: 'PUT',
             body: JSON.stringify(profData)
         });        
